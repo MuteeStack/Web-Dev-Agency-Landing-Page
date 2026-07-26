@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI/UX Design - Forma Digital Studio</title>
+  <meta name="description"
+    content="UI/UX Design services by Forma. Data-driven user experience design focusing on intuitive navigation, accessibility, and conversion optimization.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #fafaf8;
+      color: #111;
+    }
+
+    nav {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 10px 10px 32px;
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      border-radius: 100px;
+      gap: 80px;
+      width: max-content;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6b35, #f7c59f, #90f1ef, #7b61ff);
+      background-size: 300% 300%;
+      animation: gs 4s ease infinite;
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6), 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes gs {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: #444;
+      padding: 10px 18px;
+      border-radius: 100px;
+      display: block;
+      transition: all .2s;
+    }
+
+    .nav-links a:hover {
+      color: #111;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .nav-cta {
+      background: #111 !important;
+      color: #fafaf8 !important;
+      font-weight: 600 !important;
+      padding: 12px 28px !important;
+      border-radius: 100px !important;
+      font-size: 13px !important;
+      margin-left: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+      transition: transform .2s !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px) !important;
+      background: #000 !important;
+    }
+
+    .pg-service-detail {
+      position: relative;
+      overflow: hidden;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #fafaf8;
+      border-bottom: 1px solid #eee;
+      padding: 150px 20px 100px;
+    }
+
+    .pg-service-detail canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .service-detail-hero {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+    }
+
+    .service-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(32, 201, 151, 0.12), rgba(32, 201, 151, 0.04));
+      color: #20c997;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border: 1px solid rgba(32, 201, 151, 0.15);
+    }
+
+    .service-detail-hero h1 {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      color: #111;
+      line-height: 1.1;
+    }
+
+    .service-detail-hero h1 span {
+      background: linear-gradient(135deg, #20c997, #0ca678);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-detail-hero p {
+      font-size: 20px;
+      color: #666;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .content-section {
+      padding: 100px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .content-section.reverse {
+      direction: rtl;
+    }
+
+    .content-section.reverse>* {
+      direction: ltr;
+    }
+
+    .content-text h2 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      color: #111;
+    }
+
+    .content-text p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .content-text ul {
+      list-style: none;
+      margin-top: 30px;
+    }
+
+    .content-text ul li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .content-text ul li svg {
+      color: #20c997;
+      flex-shrink: 0;
+    }
+
+    .content-image {
+      width: 100%;
+      height: 500px;
+      border-radius: 24px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    /* UX Metrics */
+    .metrics-section {
+      padding: 80px 20px;
+      background: #fff;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .metric-card {
+      text-align: center;
+      padding: 30px;
+      background: #fafaf8;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: all 0.3s;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .metric-value {
+      font-size: 42px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #20c997, #0ca678);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .metric-label {
+      font-size: 14px;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .metric-desc {
+      font-size: 12px;
+      color: #999;
+      margin-top: 6px;
+    }
+
+    /* Research Methods */
+    .methods-section {
+      padding: 120px 20px;
+      background: #fff;
+    }
+
+    .methods-section .section-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .methods-section .section-header h2 {
+      font-size: 46px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 18px;
+      color: #111;
+    }
+
+    .methods-section .section-header p {
+      font-size: 17px;
+      color: #777;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .methods-split {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 64px;
+      max-width: 1080px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .methods-divider {
+      width: 1px;
+      align-self: stretch;
+      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1) 12%, rgba(0, 0, 0, 0.1) 88%, transparent);
+      position: relative;
+    }
+
+    .methods-divider::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      background-color: #fafaf8;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23bbb' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='12' y1='5' x2='12' y2='19'%3E%3C/line%3E%3Cline x1='5' y1='12' x2='19' y2='12'%3E%3C/line%3E%3C/svg%3E");
+      background-size: 14px 14px;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 50%;
+    }
+
+    .methods-col-header {
+      margin-bottom: 8px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .methods-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .methods-eyebrow::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .methods-col--qual .methods-eyebrow {
+      color: #ff6b35;
+    }
+
+    .methods-col--quant .methods-eyebrow {
+      color: #20c997;
+    }
+
+    .methods-col-header h3 {
+      font-size: 23px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #111;
+      letter-spacing: -0.5px;
+    }
+
+    .methods-col-header p {
+      font-size: 14.5px;
+      color: #777;
+      line-height: 1.65;
+      max-width: 340px;
+    }
+
+    .method-row {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 24px 14px;
+      border-radius: 16px;
+      transition: background 0.3s ease;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .method-row:last-child {
+      border-bottom: none;
+    }
+
+    .methods-col--qual .method-row:hover {
+      background: rgba(255, 107, 53, 0.045);
+    }
+
+    .methods-col--quant .method-row:hover {
+      background: rgba(32, 201, 151, 0.045);
+    }
+
+    .method-row-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1.5px solid;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .methods-col--qual .method-row-icon {
+      color: #ff6b35;
+      background: rgba(255, 107, 53, 0.07);
+      border-color: rgba(255, 107, 53, 0.25);
+    }
+
+    .methods-col--quant .method-row-icon {
+      color: #20c997;
+      background: rgba(32, 201, 151, 0.07);
+      border-color: rgba(32, 201, 151, 0.25);
+    }
+
+    .method-row:hover .method-row-icon {
+      transform: scale(1.1) rotate(-4deg);
+    }
+
+    .method-row-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke-width: 1.8;
+    }
+
+    .method-row-text h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #111;
+    }
+
+    .method-row-text p {
+      font-size: 13.5px;
+      color: #777;
+      line-height: 1.65;
+    }
+
+    @media(max-width:900px) {
+      .methods-split {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        max-width: 520px;
+      }
+
+      .methods-divider {
+        display: none;
+      }
+    }
+
+    /* Tech Stack */
+    .tech-section {
+      padding: 100px 20px;
+      background: #fff;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+
+    .tech-section .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .tech-section .section-header h2 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .tech-section .section-header p {
+      font-size: 16px;
+      color: #666;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .tech-chip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 24px;
+      background: #fafaf8;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+      cursor: default;
+    }
+
+    .tech-chip:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      border-color: rgba(32, 201, 151, 0.2);
+    }
+
+    .tech-chip img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .tech-chip span {
+      font-size: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* Process */
+    .process-section {
+      background: #111;
+      color: #fff;
+      padding: 100px 20px;
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .process-header h2 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .process-header p {
+      font-size: 16px;
+      color: #888;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .process-diamond {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .diamond-step {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 35px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .diamond-step:hover {
+      border-color: rgba(32, 201, 151, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .diamond-num {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 48px;
+      font-weight: 800;
+      color: rgba(32, 201, 151, 0.1);
+    }
+
+    .diamond-step h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .diamond-step p {
+      font-size: 14px;
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    .diamond-step .deliverable {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #20c997;
+      background: rgba(32, 201, 151, 0.1);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* Team */
+    .team-section {
+      padding: 100px 20px;
+      background: #fafaf8;
+    }
+
+    .team-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .team-header h2 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .team-header p {
+      font-size: 16px;
+      color: #666;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .team-lead-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .team-lead-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background-size: cover;
+      background-position: center;
+      border: 4px solid #fff;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-lead-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .team-lead-card .role {
+      font-size: 14px;
+      color: #20c997;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .team-lead-card .bio {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .team-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-card .stat-num {
+      font-size: 36px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #20c997, #0ca678);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .stat-card .stat-label {
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .team-members {
+      margin-top: 40px;
+    }
+
+    .team-members h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #111;
+    }
+
+    .member-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .member-chip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 18px;
+      background: #fff;
+      border-radius: 100px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .member-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .member-chip .member-info span {
+      display: block;
+    }
+
+    .member-chip .member-info .name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .member-chip .member-info .title {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .related-section {
+      padding: 100px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .related-section h3 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 40px;
+      text-align: center;
+      color: #111;
+      letter-spacing: -1px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .related-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .related-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #7b61ff, #a78bfa);
+      border-radius: 20px 0 0 20px;
+      transition: width 0.3s ease;
+    }
+
+    .related-card:nth-child(1)::before {
+      background: linear-gradient(to bottom, #ff6b35, #f7c59f);
+    }
+
+    .related-card:nth-child(2)::before {
+      background: linear-gradient(to bottom, #00d4ff, #90e9ff);
+    }
+
+    .related-card:nth-child(3)::before {
+      background: linear-gradient(to bottom, #cc2fff, #e8a0ff);
+    }
+
+    .related-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .related-card:hover::before {
+      width: 6px;
+    }
+
+    .related-card h4 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #111;
+      letter-spacing: -0.5px;
+    }
+
+    .related-card p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .related-card .arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #111;
+      transition: gap 0.3s ease, color 0.3s ease;
+    }
+
+    .related-card .arrow svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .related-card:hover .arrow {
+      gap: 10px;
+      color: #7b61ff;
+    }
+
+    .related-card:nth-child(1):hover .arrow {
+      color: #ff6b35;
+    }
+
+    .related-card:nth-child(2):hover .arrow {
+      color: #00d4ff;
+    }
+
+    .related-card:nth-child(3):hover .arrow {
+      color: #cc2fff;
+    }
+
+    .related-card:hover .arrow svg {
+      transform: translateX(3px);
+    }
+
+    .final-cta {
+      text-align: center;
+      padding: 100px 20px;
+      background: #111;
+      color: #fff;
+      border-radius: 24px;
+      max-width: 1200px;
+      margin: 100px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .final-cta h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .final-cta p {
+      font-size: 18px;
+      color: #aaa;
+      margin-bottom: 40px;
+    }
+
+    .final-cta .btn-p {
+      display: inline-block;
+      background: #fff;
+      color: #111;
+      padding: 14px 32px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+
+    .final-cta .btn-p:hover {
+      transform: translateY(-2px);
+      background: #eee;
+    }
+
+    .site-footer {
+      background: #111;
+      color: #fafaf8;
+      padding: 80px 40px 40px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    .footer-brand .logo {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .footer-desc {
+      color: #888;
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 300px;
+      font-weight: 400;
+    }
+
+    .footer-col h4 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul a {
+      color: #888;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      display: inline-block;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .footer-col ul a:hover {
+      color: #fff;
+      transform: translateX(6px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @media(max-width:768px) {
+      nav {
+        position: absolute;
+        width: calc(100% - 40px);
+        top: 20px;
+        left: 20px;
+        transform: none;
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+        border-radius: 20px;
+        box-sizing: border-box;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .service-detail-hero h1 {
+        font-size: 40px;
+        letter-spacing: -1px;
+      }
+
+      .content-text h2,
+      .methods-section .section-header h2,
+      .tech-section .section-header h2,
+      .process-header h2,
+      .team-header h2,
+      .final-cta h2 {
+        font-size: 32px;
+        letter-spacing: -0.5px;
+      }
+
+      .content-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 60px 20px;
+      }
+
+      .content-section.reverse {
+        direction: ltr;
+      }
+
+      .content-image {
+        height: 300px;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .methods-split {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .methods-divider {
+        display: none;
+      }
+
+      .process-diamond {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .team-stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .pg-service-detail {
+        padding: 150px 20px 60px;
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">
+      <div class="logo-mark"></div>Forma
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="courses.html">Courses</a></li>`n    <li><a href="careers.html">Careers</a></li>`n    <li><a href="courses.html">Courses</a></li>
+      <li><a href="lets-build.html" class="nav-cta">Let's Build →</a></li>
+    </ul>
+  </nav>
+
+  <div class="pg-service-detail" id="pg">
+    <canvas id="c"></canvas>
+    <div class="service-detail-hero fade-up">
+      <div class="service-badge">UI / UX Design</div>
+      <h1>Designing Experiences <span>Users Love</span></h1>
+      <p>Data-driven user experience design that prioritizes intuitive navigation, accessibility, and measurable
+        conversion optimization.</p>
+    </div>
+  </div>
+
+  <!-- UX Metrics -->
+  <div class="metrics-section">
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-value">+45%</div>
+        <div class="metric-label">Avg. Conversion Lift</div>
+        <div class="metric-desc">Post UX redesign</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">-60%</div>
+        <div class="metric-label">Bounce Rate Drop</div>
+        <div class="metric-desc">Through journey mapping</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">3.2s</div>
+        <div class="metric-label">Avg. Task Completion</div>
+        <div class="metric-desc">For key user flows</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-value">96</div>
+        <div class="metric-label">Avg. SUS Score</div>
+        <div class="metric-desc">System Usability Scale</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="content-text">
+      <h2>Research-backed design decisions.</h2>
+      <p>We don't design based on assumptions. Every UI/UX decision we make is backed by rigorous user research,
+        competitive analysis, and behavioral data. Our evidence-based approach ensures interfaces that feel natural and
+        drive results.</p>
+      <p>From usability audits of existing products to ground-up experience design for new ventures, we craft interfaces
+        that users genuinely enjoy.</p>
+      <ul>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg> UX Audits & Heuristic Analysis</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg> User Research & Testing</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg> Journey Mapping & Personas</li>
+        <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg> Accessibility (WCAG AA/AAA)</li>
+      </ul>
+    </div>
+    <div class="content-image"
+      style="background-image: url('https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=1000&q=80');">
+    </div>
+  </div>
+
+  <!-- Research Methods -->
+  <div class="methods-section">
+    <div class="section-header">
+      <h2>Our Research Methods</h2>
+      <p>Every method we run falls into one of two lenses — what people say and feel, or what the numbers prove at
+        scale. We use both, together.</p>
+    </div>
+    <div class="methods-split">
+
+      <div class="methods-col methods-col--qual">
+        <div class="methods-col-header">
+          <span class="methods-eyebrow">Qualitative</span>
+          <h3>Understanding why</h3>
+          <p>Small-sample, high-depth sessions that surface motivations and friction users can't always put into words.
+          </p>
+        </div>
+
+        <div class="method-row">
+          <div class="method-row-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg></div>
+          <div class="method-row-text">
+            <h4>User Interviews</h4>
+            <p>One-on-one conversations that uncover needs, pain points, and the mental models driving behavior.</p>
+          </div>
+        </div>
+
+        <div class="method-row">
+          <div class="method-row-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg></div>
+          <div class="method-row-text">
+            <h4>Usability Testing</h4>
+            <p>Moderated and unmoderated task-based sessions with real users to validate design hypotheses.</p>
+          </div>
+        </div>
+
+        <div class="method-row">
+          <div class="method-row-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg></div>
+          <div class="method-row-text">
+            <h4>Card Sorting</h4>
+            <p>User-led information architecture exercises to find the content groupings people actually expect.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="methods-divider"></div>
+
+      <div class="methods-col methods-col--quant">
+        <div class="methods-col-header">
+          <span class="methods-eyebrow">Quantitative</span>
+          <h3>Measuring how much</h3>
+          <p>Large-sample, statistically grounded research that tells us which patterns actually hold at scale.</p>
+        </div>
+
+        <div class="method-row">
+          <div class="method-row-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg></div>
+          <div class="method-row-text">
+            <h4>Analytics Review</h4>
+            <p>Heatmaps, session recordings, and funnel data, mined to pinpoint exactly where friction occurs.</p>
+          </div>
+        </div>
+
+        <div class="method-row">
+          <div class="method-row-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path
+                d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+              </path>
+            </svg></div>
+          <div class="method-row-text">
+            <h4>A/B Testing</h4>
+            <p>Statistical testing of design variants against real traffic to find the highest-performing solution.</p>
+          </div>
+        </div>
+
+        <div class="method-row">
+          <div class="method-row-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg></div>
+          <div class="method-row-text">
+            <h4>Competitive Benchmarking</h4>
+            <p>Scoring industry leaders against measurable UX KPIs to find the gap worth closing.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Tools -->
+  <div class="tech-section">
+    <div class="section-header">
+      <h2>Our UX Toolkit</h2>
+      <p>Industry-standard tools for research, prototyping, and validation.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+          alt="Figma"><span>Figma</span></div>
+      <div class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg"
+          alt="Sketch"><span>Sketch</span></div>
+      <div class="tech-chip"><img
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
+          alt="Material UI"><span>Material UI</span></div>
+      <div class="tech-chip"><img
+          src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/storybook/storybook-original.svg"
+          alt="Storybook"><span>Storybook</span></div>
+      <div class="tech-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg"
+          alt="Chrome DevTools"><span>DevTools</span></div>
+    </div>
+  </div>
+
+  <!-- Process -->
+  <div class="process-section">
+    <div class="process-header">
+      <h2>Our UX Design Process</h2>
+      <p>The Double Diamond approach — discover, define, develop, deliver.</p>
+    </div>
+    <div class="process-diamond">
+      <div class="diamond-step">
+        <div class="diamond-num">01</div>
+        <h3>Discover</h3>
+        <p>User research, stakeholder interviews, analytics deep-dive, and competitive benchmarking to understand the
+          problem space fully.</p>
+        <span class="deliverable">Research Report</span>
+      </div>
+      <div class="diamond-step">
+        <div class="diamond-num">02</div>
+        <h3>Define</h3>
+        <p>Synthesize research into personas, journey maps, and a clear problem statement. Define success metrics and
+          KPIs for the redesign.</p>
+        <span class="deliverable">UX Strategy Doc</span>
+      </div>
+      <div class="diamond-step">
+        <div class="diamond-num">03</div>
+        <h3>Develop</h3>
+        <p>Rapid ideation, wireframing, and interactive prototyping. Iterate through usability testing cycles to
+          validate and refine solutions.</p>
+        <span class="deliverable">Interactive Prototype</span>
+      </div>
+      <div class="diamond-step">
+        <div class="diamond-num">04</div>
+        <h3>Deliver</h3>
+        <p>Final high-fidelity designs with interaction specs, accessibility annotations, and a comprehensive handoff
+          package for development teams.</p>
+        <span class="deliverable">Design Specs</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Team -->
+  <div class="team-section">
+    <div class="team-header">
+      <h2>Meet the UX Team</h2>
+      <p>Researchers and designers who obsess over every user interaction.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-lead-card">
+        <div class="team-lead-avatar" style="background-image: url('https://i.pravatar.cc/200?img=38');"></div>
+        <h3>Yuki Tanaka</h3>
+        <div class="role">Head of UX Design</div>
+        <p class="bio">Former UX Director at Meta. 11+ years specializing in behavioral psychology and conversion
+          optimization. Published researcher in HCI.</p>
+      </div>
+      <div>
+        <div class="team-stats">
+          <div class="stat-card">
+            <div class="stat-num">300+</div>
+            <div class="stat-label">UX Audits Completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">+45%</div>
+            <div class="stat-label">Avg. Conversion Lift</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">7</div>
+            <div class="stat-label">UX Researchers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">5K+</div>
+            <div class="stat-label">User Tests Run</div>
+          </div>
+        </div>
+        <div class="team-members">
+          <h4>Core Team</h4>
+          <div class="member-row">
+            <div class="member-chip">
+              <div class="member-avatar" style="background-image: url('https://i.pravatar.cc/80?img=41');"></div>
+              <div class="member-info"><span class="name">Clara Reeves</span><span class="title">UX Researcher</span>
+              </div>
+            </div>
+            <div class="member-chip">
+              <div class="member-avatar" style="background-image: url('https://i.pravatar.cc/80?img=52');"></div>
+              <div class="member-info"><span class="name">Sam Okonkwo</span><span class="title">Interaction
+                  Designer</span></div>
+            </div>
+            <div class="member-chip">
+              <div class="member-avatar" style="background-image: url('https://i.pravatar.cc/80?img=19');"></div>
+              <div class="member-info"><span class="name">Priya Kapoor</span><span class="title">Accessibility
+                  Lead</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="related-section">
+    <h3>Related Services</h3>
+    <div class="related-grid">
+      <a href="service-web-design.html" class="related-card">
+        <h4>Web Design</h4>
+        <p>Premium visual design that brings UX strategy to life.</p><span class="arrow">Explore <svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg></span>
+      </a>
+      <a href="service-development.html" class="related-card">
+        <h4>Development</h4>
+        <p>Pixel-perfect implementation of your UX designs.</p><span class="arrow">Explore <svg viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg></span>
+      </a>
+      <a href="service-marketing.html" class="related-card">
+        <h4>Digital Marketing</h4>
+        <p>Strategic planning that aligns UX with business goals.</p><span class="arrow">Explore <svg
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="final-cta">
+    <h2>Ready to improve your user experience?</h2>
+    <p>Let's create interfaces that your users will love.</p>
+    <a href="lets-build.html" class="btn-p"><span>Start Your Project</span></a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-mark"></div>Forma
+        </div>
+        <p class="footer-desc">Crafting premium websites and interactive experiences for brands that refuse to be
+          ordinary.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Our Work</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <ul>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Dribbble</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">hello@formastudio.com</a></li>
+          <li><a href="#">+1 (555) 123-4567</a></li>
+          <li><a href="#">San Francisco, CA</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="copyright">&copy; 2026 Forma Digital Studio. All rights reserved.</div>
+      <div class="legal-links"><a href="#" style="color:#666;text-decoration:none;margin-right:15px;">Privacy
+          Policy</a><a href="#" style="color:#666;text-decoration:none;">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('c'), ctx = canvas.getContext('2d'), pg = document.getElementById('pg');
+    let W, H; const dpr = window.devicePixelRatio || 1;
+    function resize() { if (!pg) return; W = pg.offsetWidth; H = pg.offsetHeight; if (canvas) { canvas.width = W * dpr; canvas.height = H * dpr; canvas.style.width = W + 'px'; canvas.style.height = H + 'px'; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); } particles.forEach(p => p.init(true)); }
+    const palette = [[32, 201, 151], [12, 166, 120], [50, 220, 170], [80, 230, 190], [20, 180, 140]];
+    let mouse = { x: -9999, y: -9999 }, particles = [];
+    class P { constructor() { this.init(true); } init(s) { this.x = Math.random() * (W || 800); this.y = Math.random() * (H || 600); this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; if (Math.abs(this.vx) < 0.1) this.vx = 0.1 * Math.sign(this.vx || 1); if (Math.abs(this.vy) < 0.1) this.vy = 0.1 * Math.sign(this.vy || 1); this.r = 1.8 + Math.random() * 1.8; this.life = Math.random() * 300 + 200; this.age = s ? Math.floor(Math.random() * this.life) : 0; this.col = palette[Math.floor(Math.random() * palette.length)]; } update() { this.x += this.vx; this.y += this.vy; this.age++; const dx = mouse.x - this.x, dy = mouse.y - this.y, d = Math.sqrt(dx * dx + dy * dy); if (d < 140) { this.vx -= dx / d * 0.1; this.vy -= dy / d * 0.1; } if (this.age > this.life) this.init(false); if (this.x < 0 || this.x > W) this.vx *= -1; if (this.y < 0 || this.y > H) this.vy *= -1; } draw() { if (!ctx) return; const alpha = Math.sin((this.age / this.life) * Math.PI) * 0.82 + 0.1; const [r, g, b] = this.col; ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`; ctx.fill(); } }
+    for (let i = 0; i < 180; i++)particles.push(new P()); resize(); window.addEventListener('resize', resize);
+    if (pg) { new ResizeObserver(resize).observe(pg); }
+    const LD = 60, LDSQ = LD * LD;
+    function connect() { if (!ctx) return; for (let i = 0; i < particles.length; i++) { for (let j = i + 1; j < particles.length; j++) { const dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y, dSq = dx * dx + dy * dy; if (dSq < LDSQ) { const dist = Math.sqrt(dSq), a = (1 - dist / LD) * 0.28; ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(32,180,140,${a})`; ctx.lineWidth = 0.7; ctx.stroke(); } } } }
+    function loop() { if (ctx) ctx.clearRect(0, 0, W, H); connect(); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(loop); }
+    if (canvas) loop();
+    if (pg) { pg.addEventListener('mousemove', e => { const r = pg.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; }); pg.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; }); }
+  </script>
+</body>
+
+</html>
+
