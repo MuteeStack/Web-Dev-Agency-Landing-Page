@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fafaf8;color:#111;}
+.pg{width:100%;height:600px;background:#fafaf8;position:relative;overflow:hidden;border-radius:16px;display:flex;flex-direction:column;}
+canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;image-rendering:crisp-edges;}
+nav{position:absolute;top:30px;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;justify-content:space-between;padding:10px 10px 10px 32px;background:rgba(255,255,255,0.4);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,0.5);box-shadow:0 12px 40px rgba(0,0,0,0.08);border-radius:100px;gap:80px;width:max-content;}
+.logo{font-size:18px;font-weight:700;color:#111;letter-spacing:-0.5px;display:flex;align-items:center;gap:12px;}
+.logo-mark{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ff6b35,#f7c59f,#90f1ef,#7b61ff);background-size:300% 300%;animation:gs 4s ease infinite;box-shadow:inset 0 0 0 2px rgba(255,255,255,0.6), 0 4px 12px rgba(0,0,0,0.1);}
+@keyframes gs{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.nav-links{display:flex;list-style:none;gap:4px;align-items:center;}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:#444;padding:10px 18px;border-radius:100px;display:block;transition:all .2s;}
+.nav-links a:hover{color:#111;background:rgba(255,255,255,0.7);box-shadow:0 2px 10px rgba(0,0,0,0.03);}
+.nav-cta{background:#111!important;color:#fafaf8!important;font-weight:600!important;padding:12px 28px!important;border-radius:100px!important;font-size:13px!important;margin-left:8px;box-shadow:0 4px 15px rgba(0,0,0,0.1)!important;transition:transform .2s!important;}
+.nav-cta:hover{transform:translateY(-1px)!important;background:#000!important;}
+.hero{position:relative;z-index:10;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 40px;}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;color:#999;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:22px;animation:fu .8s ease both;}
+.tag-dash{width:24px;height:1px;background:#ddd;}
+@keyframes fu{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+h1{font-size:58px;font-weight:800;line-height:1.0;letter-spacing:-2.5px;color:#111;max-width:580px;margin-bottom:18px;animation:fu .9s .1s ease both;}
+.wa{display:inline-block;background:linear-gradient(90deg,#ff6b35,#cc2fff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gs 3s ease infinite;}
+.sub{font-size:15px;font-weight:300;color:#888;max-width:380px;line-height:1.8;margin-bottom:32px;animation:fu 1s .2s ease both;}
+.btns{display:flex;gap:12px;align-items:center;animation:fu 1s .3s ease both;}
+.btn-p{background:#111;color:#fafaf8;border:none;padding:13px 30px;border-radius:100px;font-size:14px;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.btn-p::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#ff6b35,#cc2fff,#00d4ff);opacity:0;transition:opacity .3s;}
+.btn-p:hover::before{opacity:1;}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(0,0,0,.18);}
+.btn-p span{position:relative;z-index:1;}
+.btn-s{background:rgba(255,255,255,.7);color:#555;border:1px solid rgba(0,0,0,.12);padding:13px 26px;border-radius:100px;font-size:14px;font-weight:500;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;backdrop-filter:blur(8px);transition:background .2s,transform .2s;}
+.btn-s:hover{background:rgba(255,255,255,.95);transform:translateY(-2px);}
+.fbadge{position:absolute;z-index:15;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-radius:100px;padding:10px 20px;font-size:12.5px;font-weight:600;box-shadow:0 4px 24px rgba(0,0,0,.08);white-space:nowrap;}
+.fdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.fb1{top:22%;left:18%;border:1px solid rgba(255,107,53,.25);color:#cc4400;animation:fl1 5s ease-in-out infinite;}
+.fb1 .fdot{background:linear-gradient(135deg,#ff6b35,#f7c59f);}
+.fb2{top:16%;right:16%;border:1px solid rgba(204,47,255,.25);color:#9911cc;animation:fl2 6.5s ease-in-out infinite;}
+.fb2 .fdot{background:linear-gradient(135deg,#cc2fff,#90f1ef);}
+.fb3{top:48%;left:14%;border:1px solid rgba(0,212,255,.25);color:#0088aa;animation:fl3 5.5s ease-in-out infinite;}
+.fb3 .fdot{background:linear-gradient(135deg,#00d4ff,#7b61ff);}
+.fb4{top:50%;right:14%;border:1px solid rgba(123,97,255,.25);color:#5533bb;animation:fl4 7s ease-in-out infinite;}
+.fb4 .fdot{background:linear-gradient(135deg,#7b61ff,#a78bfa);}
+.fb5{bottom:28%;left:19%;border:1px solid rgba(255,107,53,.2);color:#aa3300;animation:fl5 6s ease-in-out infinite;}
+.fb5 .fdot{background:linear-gradient(135deg,#ff6b35,#cc2fff);}
+.fb6{bottom:26%;right:18%;border:1px solid rgba(0,212,255,.2);color:#006688;animation:fl6 5.8s ease-in-out infinite;}
+.fb6 .fdot{background:linear-gradient(135deg,#00d4ff,#72efdd);}
+@keyframes fl1{0%,100%{transform:translate(0,0) rotate(-1deg);}40%{transform:translate(6px,-10px) rotate(1.5deg);}70%{transform:translate(-4px,6px) rotate(-.5deg);}}
+@keyframes fl2{0%,100%{transform:translate(0,0) rotate(1deg);}40%{transform:translate(-8px,-7px) rotate(-2deg);}70%{transform:translate(5px,9px) rotate(1deg);}}
+@keyframes fl3{0%,100%{transform:translate(0,0) rotate(-.5deg);}40%{transform:translate(10px,7px) rotate(2deg);}70%{transform:translate(-6px,-8px) rotate(-1.5deg);}}
+@keyframes fl4{0%,100%{transform:translate(0,0) rotate(1.5deg);}40%{transform:translate(-7px,9px) rotate(-1deg);}70%{transform:translate(5px,-7px) rotate(2deg);}}
+@keyframes fl5{0%,100%{transform:translate(0,0) rotate(-1.5deg);}40%{transform:translate(8px,6px) rotate(1deg);}70%{transform:translate(-5px,-9px) rotate(-2deg);}}
+@keyframes fl6{0%,100%{transform:translate(0,0) rotate(.5deg);}40%{transform:translate(-9px,-5px) rotate(-1.5deg);}70%{transform:translate(7px,8px) rotate(1.5deg);}}
+</style>
+
+<div class="pg" id="pg">
+  <canvas id="c"></canvas>
+  <div class="fbadge fb1"><div class="fdot"></div>Web Design</div>
+  <div class="fbadge fb2"><div class="fdot"></div>Development</div>
+  <div class="fbadge fb3"><div class="fdot"></div>Branding</div>
+  <div class="fbadge fb4"><div class="fdot"></div>UI / UX</div>
+  <div class="fbadge fb5"><div class="fdot"></div>Strategy</div>
+  <div class="fbadge fb6"><div class="fdot"></div>SEO &amp; Growth</div>
+  <nav>
+    <div class="logo"><div class="logo-mark"></div>Forma</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+    <li><a href="careers.html">Careers</a></li>
+    <li><a href="courses.html">Courses</a></li>`n    <li><a href="careers.html">Careers</a></li>`n    <li><a href="courses.html">Courses</a></li>
+      <li><a href="lets-build.html" class="nav-cta">Let's Build →</a></li>
+    </ul>
+  </nav>
+  <div class="hero">
+    <div class="tag"><span class="tag-dash"></span>Digital Studio<span class="tag-dash"></span></div>
+    <h1>We design<br><span class="wa">the future</span><br>of the web</h1>
+    <p class="sub">Premium websites and digital experiences for brands that refuse to be ordinary.</p>
+    <div class="btns">
+      <button class="btn-p"><span>Start a Project</span></button>
+      <button class="btn-s">See Our Work ↗</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx    = canvas.getContext('2d');
+const pg     = document.getElementById('pg');
+let W, H;
+const dpr = window.devicePixelRatio || 1;
+
+function resize() {
+  W = pg.offsetWidth;
+  H = pg.offsetHeight;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  // respawn all particles spread across full canvas on resize
+  particles.forEach(p => p.init(true));
+}
+
+const palette = [
+  [255, 107,  53],
+  [204,  47, 255],
+  [  0, 212, 255],
+  [123,  97, 255],
+  [ 20, 200, 150],
+];
+
+let mouse    = { x: -9999, y: -9999 };
+let smoothMX = -9999, smoothMY = -9999;
+let particles = [];
+
+class P {
+  constructor() { this.init(true); }
+
+  init(scatter) {
+    // Always scatter randomly across THE FULL canvas
+    this.x  = Math.random() * (W || 800);
+    this.y  = Math.random() * (H || 600);
+    this.vx = (Math.random() - 0.5) * 0.5;
+    this.vy = (Math.random() - 0.5) * 0.5;
+    // keep vx/vy non-zero so they always drift
+    if (Math.abs(this.vx) < 0.1) this.vx = 0.1 * Math.sign(this.vx || 1);
+    if (Math.abs(this.vy) < 0.1) this.vy = 0.1 * Math.sign(this.vy || 1);
+    this.r    = 1.8 + Math.random() * 1.8;
+    this.life = Math.random() * 300 + 200;
+    this.age  = scatter ? Math.floor(Math.random() * this.life) : 0;
+    this.col  = palette[Math.floor(Math.random() * palette.length)];
+    this.rvx  = 0;
+    this.rvy  = 0;
+  }
+
+  update() {
+    this.x += this.vx; this.y += this.vy; this.age++;
+    const dx = mouse.x - this.x, dy = mouse.y - this.y;
+    const d = Math.sqrt(dx * dx + dy * dy);
+    if (d < 90) {
+      this.vx -= dx / d * 0.06;
+      this.vy -= dy / d * 0.06;
+    }
+    if (this.age > this.life) this.init(false);
+    if (this.x < 0 || this.x > W) this.vx *= -1;
+    if (this.y < 0 || this.y > H) this.vy *= -1;
+  }
+
+  draw() {
+    const alpha = Math.sin((this.age / this.life) * Math.PI) * 0.82 + 0.1;
+    const [r, g, b] = this.col;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${r},${g},${b},${alpha})`;
+    ctx.fill();
+  }
+}
+
+// 160 particles — enough to fill the full canvas evenly
+for (let i = 0; i < 160; i++) particles.push(new P());
+
+resize();
+window.addEventListener('resize', resize);
+
+// Lines only drawn when dots are VERY close (60px) — subtle, not spiderweb
+const LINE_DIST    = 65;
+const LINE_DIST_SQ = LINE_DIST * LINE_DIST;
+
+function connect() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dSq = dx * dx + dy * dy;
+      if (dSq < LINE_DIST_SQ) {
+        const dist = Math.sqrt(dSq);
+        const a    = (1 - dist / LINE_DIST) * 0.28;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(150,120,210,${a})`;
+        ctx.lineWidth   = 0.7;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+function loop() {
+  smoothMX = lerp(smoothMX, mouse.x, 0.09);
+  smoothMY = lerp(smoothMY, mouse.y, 0.09);
+  ctx.clearRect(0, 0, W, H);
+  connect();
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(loop);
+}
+loop();
+
+pg.addEventListener('mousemove', e => {
+  const r = pg.getBoundingClientRect();
+  mouse.x = e.clientX - r.left;
+  mouse.y = e.clientY - r.top;
+});
+pg.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+</script>
+
+
